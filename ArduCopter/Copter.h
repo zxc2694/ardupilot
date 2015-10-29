@@ -675,6 +675,8 @@ private:
     uint32_t micros();
     bool acro_init(bool ignore_checks);
     void acro_run();
+    bool hellovcc_init(bool ignore_checks);
+    void hellovcc_run();
     void get_pilot_desired_angle_rates(int16_t roll_in, int16_t pitch_in, int16_t yaw_in, float &roll_out, float &pitch_out, float &yaw_out);
     bool althold_init(bool ignore_checks);
     void althold_run();

@@ -95,6 +95,10 @@ bool Copter::set_mode(uint8_t mode)
             success = brake_init(ignore_checks);
             break;
 
+         case HELLOVCC:
+            success = hellovcc_init(ignore_checks);
+            break;
+
         default:
             success = false;
             break;
@@ -206,6 +210,10 @@ void Copter::update_flight_mode()
         case BRAKE:
             brake_run();
             break;
+
+         case HELLOVCC:
+            hellovcc_run();
+            break;
     }
 }
 
@@ -260,6 +268,7 @@ bool Copter::mode_requires_GPS(uint8_t mode) {
         case DRIFT:
         case POSHOLD:
         case BRAKE:
+        case HELLOVCC:
             return true;
         default:
             return false;
@@ -361,6 +370,9 @@ void Copter::print_flight_mode(AP_HAL::BetterStream *port, uint8_t mode)
         break;
     case BRAKE:
         port->print_P(PSTR("BRAKE"));
+        break;
+    case HELLOVCC:
+        port->print_P(PSTR("HELLOVCC"));
         break;
     default:
         port->printf_P(PSTR("Mode(%u)"), (unsigned)mode);
