@@ -99,6 +99,7 @@
   
  */
 const AP_Scheduler::Task Copter::scheduler_tasks[] PROGMEM = {
+    SCHED_TASK(hello_function, 1,    100),
     SCHED_TASK(rc_loop,                4,    130),
     SCHED_TASK(throttle_loop,          8,     75),
     SCHED_TASK(update_GPS,             8,    200),
@@ -457,10 +458,15 @@ void Copter::three_hz_loop()
     // update ch6 in flight tuning
     tuning();
 }
+void Copter::hello_function()
+{
 
+}
 // one_hz_loop - runs at 1Hz
 void Copter::one_hz_loop()
 {
+//    hello_function();
+
     if (should_log(MASK_LOG_ANY)) {
         Log_Write_Data(DATA_AP_STATE, ap.value);
     }

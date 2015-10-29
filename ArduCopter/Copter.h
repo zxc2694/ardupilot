@@ -550,6 +550,7 @@ private:
     void full_rate_logging_loop();
     void three_hz_loop();
     void one_hz_loop();
+     void hello_function();
     void update_GPS(void);
     void init_simple_bearing();
     void update_simple_mode(void);
